@@ -31,7 +31,7 @@
 | prefecture_id         | integer       | null: false |
 | delivery_schedule_id  | integer       | null: false |
 | price                 | integer       | null: false |
-| user                  | references    |             |
+| user                  | references    | foreign_key: true |
 
 
 ### Association
@@ -44,21 +44,26 @@
 
 | Column           | Type       | Options     |
 | ------           | ---------- | ----------- |
-| item             | references |             |
-| user             | references |             |
+| item             | references | foreign_key: true |
+| user             | references | foreign_key: true |
 
 ### Association
 - belong_to :user
 - belong_to :item
+- has_one :destination
 
 ## destinations テーブル
 
 | Column           | Type       | Options     |
 | ------           | ---------- | ----------- |
 | postal_code      | integer    | null: false |
-| prefecture       | integer    | null: false |
+| prefecture_id    | integer    | null: false |
 | city             | string     | null: false |
 | address          | string     | null: false |
 | building         | string     |             |
 | phone_number     | integer    | null: false |
-| purchase         | references |             |
+| purchase         | references | foreign_key: true |
+
+
+### Association
+- belong_to :purchase
