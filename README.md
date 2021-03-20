@@ -36,7 +36,7 @@
 
 ### Association
 
-- belong_to :user
+- belongs_to :user
 - has_one :purchase
 
 
@@ -48,8 +48,8 @@
 | user             | references | foreign_key: true |
 
 ### Association
-- belong_to :user
-- belong_to :item
+- belongs_to :user
+- belongs_to :item
 - has_one :destination
 
 ## destinations テーブル
@@ -66,4 +66,4 @@
 
 
 ### Association
-- belong_to :purchase
+- belongs_to :purchase
