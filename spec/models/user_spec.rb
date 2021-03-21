@@ -62,8 +62,8 @@ RSpec.describe User, type: :model do
 
     end   
     it 'passwordが５文字以下では登録できない' do
-      @user.password = '12345'
-      @user.password_confirmation = '12345'
+      @user.password = '123ab'
+      @user.password_confirmation = '123ab'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
@@ -83,6 +83,26 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = 'aaa000'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-    end  
+    end
+    it 'first_nameが漢字・平仮名・カタカナ以外では登録できない' do
+      @user.first_name = 'aaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name は全角漢字・平仮名・カタカナ以外では登録できません")
+    end
+    it 'last_nameが漢字・平仮名・カタカナ以外では登録できない' do
+      @user.last_name = '111'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name は全角漢字・平仮名・カタカナ以外では登録できません")
+    end
+    it 'first_name_kanaが全角カタカナ以外では登録できない' do
+      @user.first_name_kana = 'aaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana は全角カタカナ以外では登録できません")
+    end
+    it 'last_name_kanaが全角カタカナ以外では登録できない' do
+      @user.last_name_kana = '111'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name kana は全角カタカナ以外では登録できません")
+    end
   end
 end
