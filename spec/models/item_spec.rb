@@ -6,7 +6,6 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品の情報を入力' do
-
     it 'item_name, explain, category_id, status_id, shipping_fee_id, prefecture_id, delivery_schedule_id, price, user の値が存在すれば登録できること' do
       expect(@item).to be_valid
     end
@@ -26,7 +25,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Explain can't be blank")
     end
     it 'category_idが1では登録できないこと' do
-      @item.scategory_id = '1'
+      @item.category_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 1")
     end
