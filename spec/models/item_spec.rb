@@ -83,8 +83,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price 入力値が300~9,999,999の範囲外です")
       end 
-
-
     end  
   end
 end
