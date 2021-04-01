@@ -126,7 +126,7 @@
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
 
     <ul class='item-lists'>
-      <% @items.order('updated_at DESC').each do |item| %>
+      <% @items.each do |item| %>
         <li class='list'>
           <%= link_to "#" do %>
           <div class='item-img-content'>
