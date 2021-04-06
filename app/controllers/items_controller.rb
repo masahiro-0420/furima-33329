@@ -37,11 +37,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
-      redirect_to action: :index
-    else
-      render :index
-    end
+    @item.destroy
+    redirect_to action: :index
   end
 
   def move_to_index
