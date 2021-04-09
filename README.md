@@ -40,7 +40,7 @@
 - has_one :purchase
 
 
-## purchases テーブル
+## orders テーブル
 
 | Column           | Type       | Options     |
 | ------           | ---------- | ----------- |
@@ -67,5 +67,5 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
 
