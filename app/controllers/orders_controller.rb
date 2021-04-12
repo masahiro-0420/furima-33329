@@ -6,20 +6,20 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @order_destination = OrderDestination.new(order_destination_params)
     if @order_destination.valid?
       @order_destination.save
-      redirect_to root_path
+      return redirect_to root_path
     else
-      render :index
+      @item = Item.find(params[:item_id])
+      render 'index'
     end
   end
 
   private
 
   def order_destination_params
-    params.require(:order_destination).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user: current_user.id, item: @item.id)
+    params.require(:order_destination).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(item_id: params[:item_id], user_id: current_user.id)
   end
 
 end
