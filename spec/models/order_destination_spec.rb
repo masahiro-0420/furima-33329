@@ -15,7 +15,7 @@ RSpec.describe OrderDestination, type: :model do
       expect(@order_destination.errors.full_messages).to include("Postal code can't be blank")
     end
     it 'postal_codeにハイフンがないと保存できないこと' do
-      @order_destination.name = '1234567'
+      @order_destination.postal_code = '1234567'
       @order_destination.valid?
       expect(@order_destination.errors.full_messages).to include('Postal code はハイフンが必要です')
     end
@@ -54,4 +54,5 @@ RSpec.describe OrderDestination, type: :model do
       @order_destination.valid?
       expect(@order_destination.errors.full_messages).to include('Phone number は11桁以内でハイフンが不要です')
     end
+  end
 end
