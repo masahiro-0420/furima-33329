@@ -54,5 +54,16 @@ RSpec.describe OrderDestination, type: :model do
       @order_destination.valid?
       expect(@order_destination.errors.full_messages).to include('Phone number は11桁以内でハイフンが不要です')
     end
+    it "priceが空では登録できないこと" do
+      @order_destination.price = nil
+      @order_destination.valid?
+      expect(@order_destination.errors.full_messages).to include("Price can't be blank")
+    end
+    it "tokenが空では登録できないこと" do
+      @order_destination.token = nil
+      @order_destination.valid?
+      expect(@order_destination.errors.full_messages).to include("Token can't be blank")
+    end
+
   end
 end
