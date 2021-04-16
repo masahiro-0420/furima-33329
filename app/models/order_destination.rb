@@ -10,6 +10,8 @@ class OrderDestination
     validates :phone_number, format: { with: /\A\d{1,11}\z/, message: "は11桁以内でハイフンが不要です" }  
     validates :token
     validates :price
+    validates :user_id
+    validates :item_id
   end
 
   def save
